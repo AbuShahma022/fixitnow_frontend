@@ -4,6 +4,8 @@ import Features from "./_components/home/Features";
 import PopularCategories from "./_components/home/PopularCategories";
 import PopularServices from "./_components/home/PopularServices";
 import TopTechnicians from "./_components/home/TopTechnicians";
+import HowItWorks from "./_components/home/HowItWorks";
+import CallToAction from "./_components/home/CallToAction";
 
 export default function Home() {
   return (
@@ -13,6 +15,9 @@ export default function Home() {
     <PopularCategories />
     <PopularServices/>
     <TopTechnicians/>
-   </div>
+    <HowItWorks/>
+    <CallToAction/>
+
+    </div>
   );
 }
