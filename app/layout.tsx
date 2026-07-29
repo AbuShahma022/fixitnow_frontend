@@ -1,13 +1,14 @@
-import type { Metadata } from "next";
-import { Geist, Geist_Mono, Inter, Roboto } from "next/font/google";
+import type {Metadata} from "next";
+import {Geist, Geist_Mono, Inter, Roboto} from "next/font/google";
 import "./globals.css";
-import { cn } from "@/lib/utils";
-import { ThemeProvider } from "@/components/theme-provider";
+import {cn} from "@/lib/utils";
+import {ThemeProvider} from "@/components/theme-provider";
 import Navbar from "@/shared/navbar/navbar";
+import QueryProvider from "@/lib/providers/QueryProvider";
 
-const robotoHeading = Roboto({subsets:['latin'],variable:'--font-heading'});
+const robotoHeading = Roboto({subsets: ["latin"], variable: "--font-heading"});
 
-const inter = Inter({subsets:['latin'],variable:'--font-sans'});
+const inter = Inter({subsets: ["latin"], variable: "--font-sans"});
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -32,21 +33,30 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-       suppressHydrationWarning
-      className={cn("h-full", "antialiased", geistSans.variable, geistMono.variable, "font-sans", inter.variable, robotoHeading.variable)}
+      suppressHydrationWarning
+      className={cn(
+        "h-full",
+        "antialiased",
+        geistSans.variable,
+        geistMono.variable,
+        "font-sans",
+        inter.variable,
+        robotoHeading.variable,
+      )}
     >
       <body className="min-h-full flex flex-col">
         <ThemeProvider
-            attribute="class"
-            defaultTheme="system"
-            enableSystem
-            disableTransitionOnChange
-          >
-             <Navbar />
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <QueryProvider>
+            <Navbar />
             {children}
-          </ThemeProvider>
-        
-        </body>
+          </QueryProvider>
+        </ThemeProvider>
+      </body>
     </html>
   );
 }
