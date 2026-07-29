@@ -5,6 +5,7 @@ import {cn} from "@/lib/utils";
 import {ThemeProvider} from "@/components/theme-provider";
 import Navbar from "@/shared/navbar/navbar";
 import QueryProvider from "@/lib/providers/QueryProvider";
+import Footer from "@/shared/Footer";
 
 const robotoHeading = Roboto({subsets: ["latin"], variable: "--font-heading"});
 
@@ -54,6 +55,7 @@ export default function RootLayout({
           <QueryProvider>
             <Navbar />
             {children}
+            <Footer />
           </QueryProvider>
         </ThemeProvider>
       </body>
