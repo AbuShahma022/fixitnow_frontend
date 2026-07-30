@@ -4,6 +4,7 @@ import SectionHeading from "@/shared/SectionHeading";
 
 import { MasterService } from "@/types/service";
 import ServiceCard from "../home/ServiceCard";
+import EmptyServices from "./EmptyServices";
 
 interface CategoryServicesProps {
   services: MasterService[];
@@ -12,19 +13,9 @@ interface CategoryServicesProps {
 export default function CategoryServices({
   services,
 }: CategoryServicesProps) {
-  if (!services.length) {
-    return (
-      <div className="rounded-xl border border-dashed py-16 text-center">
-        <h3 className="text-xl font-semibold">
-          No Services Available
-        </h3>
-
-        <p className="mt-2 text-muted-foreground">
-          There are currently no services in this category.
-        </p>
-      </div>
-    );
-  }
+ if (!services.length) {
+  return <EmptyServices />;
+}
 
   return (
     <section className="space-y-8">
