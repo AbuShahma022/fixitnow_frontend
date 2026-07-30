@@ -21,3 +21,9 @@ export const getAllTechnicians = async (
 
   return data.data;
 };
+
+export const getTechnicianById = async (id: string) => {
+  const response = await api.get(`/technician-profile/${id}`);
+
+  return response.data.data;
+};

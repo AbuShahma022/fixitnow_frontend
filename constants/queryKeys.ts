@@ -3,4 +3,6 @@ export const QUERY_KEYS = {
    MASTER_SERVICES: ["master-services"],
     MASTER_SERVICE: ["master-service"],
    TECHNICIANS: ["technicians"],
+     TECHNICIAN: ["technician"],
+     TECHNICIAN_REVIEWS: ["technician-reviews"],
 } as const;
