@@ -10,6 +10,7 @@ import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
+import ServicesSkeleton from "../../_components/services/ServicesSkeleton";
 
 
 export default function ServiceDetailsPage() {
@@ -36,7 +37,7 @@ export default function ServiceDetailsPage() {
   if (isLoading) {
     return (
       <Container className="py-20">
-        Loading...
+          <ServicesSkeleton />
       </Container>
     );
   }

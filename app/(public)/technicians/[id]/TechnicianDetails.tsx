@@ -7,6 +7,8 @@ import { useTechnicianReviews } from "@/hooks/useTechnicianReviews";
 import TechnicianHero from "../../_components/technician-details/TechnicianHero";
 import TechnicianServices from "../../_components/technician-details/TechnicianServices";
 import TechnicianAvailability from "../../_components/technician-details/TechnicianAvailability";
+import TechnicianReviews from "../../_components/technician-details/TechnicianReviews";
+import TechnicianDetailsSkeleton from "../../_components/technician-details/TechnicianDetailsSkeleton";
 
 interface TechnicianDetailsProps {
   id: string;
@@ -20,18 +22,17 @@ export default function TechnicianDetails({
     isLoading: isTechnicianLoading,
   } = useTechnician(id);
 
-  const {
-    data: reviews,
-    isLoading: isReviewsLoading,
-  } = useTechnicianReviews(id);
-
-  if (isTechnicianLoading || isReviewsLoading) {
-    return (
-      <Container className="py-20">
-        Loading...
-      </Container>
-    );
-  }
+const {
+  data: reviewsData,
+  isLoading: isReviewsLoading,
+} = useTechnicianReviews(id);
+if (isTechnicianLoading || isReviewsLoading) {
+  return (
+    <Container className="py-20">
+      <TechnicianDetailsSkeleton />
+    </Container>
+  );
+}
 
   if (!technician) {
     return (
@@ -50,6 +51,12 @@ export default function TechnicianDetails({
 
 <TechnicianAvailability
   availabilities={technician.availabilities ?? []}
+/>
+
+<TechnicianReviews
+  averageRating={reviewsData.averageRating}
+  totalReviews={reviewsData.totalReviews}
+  reviews={reviewsData.reviews}
 />
     </Container>
   );
