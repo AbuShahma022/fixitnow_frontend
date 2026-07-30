@@ -28,27 +28,6 @@ export interface TechnicianLocation {
   updatedAt: string;
 }
 
-export interface Technician {
-  id: string;
-  userId: string;
-  locationId: string;
-  bio: string;
-  experienceYears: number;
-  averageRating: number;
-  totalReviews: number;
-  createdAt: string;
-  updatedAt: string;
-
-  user: TechnicianUser;
-  location: TechnicianLocation;
-}
-
-export interface TechniciansResponse {
-  success: boolean;
-  message: string;
-  data: Technician[];
-}
-
 export interface TechnicianServiceCategory {
   id: string;
   name: string;
@@ -84,7 +63,16 @@ export interface TechnicianService {
   service: TechnicianMasterService;
 }
 
-
+export interface TechnicianAvailability {
+  id: string;
+  technicianProfileId: string;
+  dayOfWeek: string;
+  startTime: string;
+  endTime: string;
+  status: "AVAILABLE" | "UNAVAILABLE";
+  createdAt: string;
+  updatedAt: string;
+}
 
 export interface Technician {
   id: string;
@@ -100,8 +88,8 @@ export interface Technician {
   user: TechnicianUser;
   location: TechnicianLocation;
 
- 
-  technicianServices: TechnicianService[];
+  technicianServices?: TechnicianService[];
+  availabilities?: TechnicianAvailability[];
 }
 
 export interface TechniciansResponse {
