@@ -21,7 +21,7 @@ export default function TechnicianFilters({
         <Input
           value={search}
           onChange={(e) => onSearchChange(e.target.value)}
-          placeholder="Search technicians..."
+          placeholder="Search by service (e.g. Fan Installation)"
           className="pl-10"
         />
       </div>
