@@ -14,6 +14,38 @@ interface TechnicianAvailabilityProps {
 export default function TechnicianAvailability({
   availabilities,
 }: TechnicianAvailabilityProps) {
+    const groupedAvailabilities = availabilities.reduce(
+  (acc, slot) => {
+    if (!acc[slot.dayOfWeek]) {
+      acc[slot.dayOfWeek] = [];
+    }
+
+    acc[slot.dayOfWeek].push(slot);
+
+    return acc;
+  },
+  {} as Record<string, Availability[]>
+);
+const formatDay = (day: string) =>
+  day.charAt(0) + day.slice(1).toLowerCase();
+
+const dayOrder = [
+  "MONDAY",
+  "TUESDAY",
+  "WEDNESDAY",
+  "THURSDAY",
+  "FRIDAY",
+  "SATURDAY",
+  "SUNDAY",
+];
+
+const sortedDays = Object.entries(groupedAvailabilities).sort(
+  ([dayA], [dayB]) =>
+    dayOrder.indexOf(dayA) - dayOrder.indexOf(dayB)
+);
+
+
+
   return (
     <section className="space-y-6">
       <SectionHeading
@@ -30,37 +62,44 @@ export default function TechnicianAvailability({
         </Card>
       ) : (
         <div className="space-y-4">
-          {availabilities.map((slot) => (
-            <Card key={slot.id}>
-              <CardContent className="flex flex-col gap-4 p-5 md:flex-row md:items-center md:justify-between">
-                <div className="flex items-center gap-3">
-                  <CalendarClock className="h-5 w-5 text-primary" />
+  {sortedDays.map(([day, slots]) => (
+    <Card key={day}>
+      <CardContent className="space-y-4 p-6">
+        <h3 className="text-lg font-semibold">
+          {formatDay(day)}
+        </h3>
 
-                  <div>
-                    <h3 className="font-medium">
-                      {slot.dayOfWeek}
-                    </h3>
+        <div className="space-y-3">
+          {slots.map((slot) => (
+            <div
+              key={slot.id}
+              className="flex items-center justify-between rounded-md border p-3"
+            >
+              <div className="flex items-center gap-3">
+                <CalendarClock className="h-4 w-4 text-primary" />
 
-                    <p className="text-sm text-muted-foreground">
-                      {dayjs(slot.startTime).format("hh:mm A")} -{" "}
-                      {dayjs(slot.endTime).format("hh:mm A")}
-                    </p>
-                  </div>
-                </div>
+                <span>
+                  {dayjs(slot.startTime).format("hh:mm A")} -{" "}
+                  {dayjs(slot.endTime).format("hh:mm A")}
+                </span>
+              </div>
 
-                <Badge
-                  variant={
-                    slot.status === "AVAILABLE"
-                      ? "default"
-                      : "destructive"
-                  }
-                >
-                  {slot.status}
-                </Badge>
-              </CardContent>
-            </Card>
+              <Badge
+                variant={
+                  slot.status === "AVAILABLE"
+                    ? "default"
+                    : "destructive"
+                }
+              >
+                {slot.status}
+              </Badge>
+            </div>
           ))}
         </div>
+      </CardContent>
+    </Card>
+  ))}
+</div>
       )}
     </section>
   );
