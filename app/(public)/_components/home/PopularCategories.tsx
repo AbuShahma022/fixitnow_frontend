@@ -1,4 +1,8 @@
 "use client";
+
+import Link from "next/link";
+import { ArrowRight } from "lucide-react";
+
 import Container from "@/shared/container";
 import SectionHeading from "@/shared/SectionHeading";
 
@@ -7,6 +11,7 @@ import CategoriesSkeleton from "./CategoriesSkeleton";
 
 import { useCategories } from "@/hooks/useCategories";
 
+import { Button } from "@/components/ui/button";
 
 export default function PopularCategories() {
   const {
@@ -14,6 +19,8 @@ export default function PopularCategories() {
     isLoading,
     isError,
   } = useCategories();
+
+  const displayedCategories = categories?.slice(0, 3);
 
   return (
     <section className="py-20">
@@ -38,14 +45,25 @@ export default function PopularCategories() {
             !isError &&
             categories &&
             categories.length > 0 && (
-              <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-                {categories.map((category) => (
-                  <CategoryCard
-                    key={category.id}
-                    category={category}
-                  />
-                ))}
-              </div>
+              <>
+                <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+                  {displayedCategories?.map((category) => (
+                    <CategoryCard
+                      key={category.id}
+                      category={category}
+                    />
+                  ))}
+                </div>
+
+                <div className="mt-10 flex justify-center">
+                  <Button asChild size="lg">
+                    <Link href="/categories">
+                      View All Categories
+                      <ArrowRight className="ml-2 h-4 w-4" />
+                    </Link>
+                  </Button>
+                </div>
+              </>
             )}
 
           {!isLoading &&

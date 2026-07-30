@@ -48,3 +48,64 @@ export interface TechniciansResponse {
   message: string;
   data: Technician[];
 }
+
+export interface TechnicianServiceCategory {
+  id: string;
+  name: string;
+  description: string | null;
+  icon: string | null;
+  status: "ACTIVE" | "INACTIVE";
+  createdAt: string;
+  updatedAt: string;
+}
+
+export interface TechnicianMasterService {
+  id: string;
+  categoryId: string;
+  name: string;
+  description: string | null;
+  status: "ACTIVE" | "INACTIVE";
+  createdAt: string;
+  updatedAt: string;
+
+  category: TechnicianServiceCategory;
+}
+
+export interface TechnicianService {
+  id: string;
+  technicianProfileId: string;
+  serviceId: string;
+  price: string;
+  description: string | null;
+  status: "ACTIVE" | "INACTIVE";
+  createdAt: string;
+  updatedAt: string;
+
+  service: TechnicianMasterService;
+}
+
+
+
+export interface Technician {
+  id: string;
+  userId: string;
+  locationId: string;
+  bio: string;
+  experienceYears: number;
+  averageRating: number;
+  totalReviews: number;
+  createdAt: string;
+  updatedAt: string;
+
+  user: TechnicianUser;
+  location: TechnicianLocation;
+
+ 
+  technicianServices: TechnicianService[];
+}
+
+export interface TechniciansResponse {
+  success: boolean;
+  message: string;
+  data: Technician[];
+}

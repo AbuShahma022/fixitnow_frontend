@@ -9,3 +9,9 @@ export const getAllCategories = async () => {
 
   return data.data;
 };
+
+export const getCategoryById = async (id: string) => {
+  const { data } = await api.get(`/category/get-category/${id}`);
+
+  return data.data;
+};
