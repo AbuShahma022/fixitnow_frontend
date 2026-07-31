@@ -16,6 +16,7 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { ModeToggle } from "@/components/ModeToggle";
+import MobileAuth from "./MobileAuth";
 
 export default function MobileNav() {
   const pathname = usePathname();
@@ -46,7 +47,7 @@ export default function MobileNav() {
                     "rounded-md px-3 py-2 text-sm font-medium transition-colors",
                     isActive
                       ? "bg-primary/10 text-primary"
-                      : "text-muted-foreground hover:bg-muted hover:text-primary"
+                      : "text-muted-foreground hover:bg-muted hover:text-primary",
                   )}
                 >
                   {link.label}
@@ -55,18 +56,8 @@ export default function MobileNav() {
             })}
           </nav>
 
-          <div className="mt-auto flex flex-col gap-2 border-t pt-6">
-            <Button asChild variant="outline">
-              <Link href="/login" onClick={() => setOpen(false)}>
-                Login
-              </Link>
-            </Button>
-
-            <Button asChild>
-              <Link href="/register" onClick={() => setOpen(false)}>
-                Register
-              </Link>
-            </Button>
+          <div className="mt-auto border-t pt-6">
+            <MobileAuth onNavigate={() => setOpen(false)} />
           </div>
         </SheetContent>
       </Sheet>

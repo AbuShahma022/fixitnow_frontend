@@ -1,3 +1,6 @@
+import { ApiResponse } from "./api";
+import { Technician } from "./technician";
+
 export type UserStatus = "ACTIVE" | "INACTIVE";
 
 export type UserRoleType =
@@ -23,3 +26,11 @@ export interface User {
   updatedAt: string;
   role: UserRole[];
 }
+
+
+
+export interface ProfileUser extends User {
+  technicianProfile: Technician | null;
+}
+
+export type ProfileResponse = ApiResponse<ProfileUser>;

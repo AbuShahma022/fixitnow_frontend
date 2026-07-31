@@ -8,6 +8,7 @@ import NavLinks from "./NavLinks";
 
 import { Button } from "@/components/ui/button";
 import { ModeToggle } from "@/components/ModeToggle";
+import AuthButtons from "./AuthButtons";
 
 export default function Navbar() {
   return (
@@ -24,13 +25,7 @@ export default function Navbar() {
           <div className="hidden items-center gap-2 md:flex">
             <ModeToggle />
 
-            <Button variant="ghost" asChild>
-              <Link href="/login">Login</Link>
-            </Button>
-
-            <Button asChild>
-              <Link href="/register">Register</Link>
-            </Button>
+              <AuthButtons/>
           </div>
 
           {/* Mobile Navigation */}
