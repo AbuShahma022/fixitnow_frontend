@@ -1,3 +1,6 @@
+import { Location } from "./location";
+import { User } from "./user";
+
 export interface TechnicianRole {
   id: string;
   userId: string;
@@ -5,28 +8,28 @@ export interface TechnicianRole {
   createdAt: string;
 }
 
-export interface TechnicianUser {
-  id: string;
-  name: string;
-  email: string;
-  phone: string | null;
-  profileImage: string | null;
-  status: "ACTIVE" | "INACTIVE";
-  createdAt: string;
-  updatedAt: string;
-  role: TechnicianRole[];
-}
+// export interface TechnicianUser {
+//   id: string;
+//   name: string;
+//   email: string;
+//   phone: string | null;
+//   profileImage: string | null;
+//   status: "ACTIVE" | "INACTIVE";
+//   createdAt: string;
+//   updatedAt: string;
+//   role: TechnicianRole[];
+// }
 
-export interface TechnicianLocation {
-  id: string;
-  country: string;
-  division: string;
-  district: string;
-  area: string;
-  postalCode: string;
-  createdAt: string;
-  updatedAt: string;
-}
+// export interface TechnicianLocation {
+//   id: string;
+//   country: string;
+//   division: string;
+//   district: string;
+//   area: string;
+//   postalCode: string;
+//   createdAt: string;
+//   updatedAt: string;
+// }
 
 export interface TechnicianServiceCategory {
   id: string;
@@ -85,8 +88,8 @@ export interface Technician {
   createdAt: string;
   updatedAt: string;
 
-  user: TechnicianUser;
-  location: TechnicianLocation;
+  user: User;
+  location: Location;
 
   technicianServices?: TechnicianService[];
   availabilities?: TechnicianAvailability[];
