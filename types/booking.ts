@@ -65,3 +65,9 @@ export interface Review {
   createdAt: string;
   updatedAt: string;
 }
+
+export interface MyBookingsResponse {
+  success: boolean;
+  message: string;
+  data: Booking[];
+}
