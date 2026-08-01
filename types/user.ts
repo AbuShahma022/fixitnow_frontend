@@ -34,3 +34,9 @@ export interface ProfileUser extends User {
 }
 
 export type ProfileResponse = ApiResponse<ProfileUser>;
+
+export interface UpdateProfilePayload {
+  name: string;
+  phone?: string;
+  profileImage?: string;
+}
