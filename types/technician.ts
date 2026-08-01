@@ -8,28 +8,6 @@ export interface TechnicianRole {
   createdAt: string;
 }
 
-// export interface TechnicianUser {
-//   id: string;
-//   name: string;
-//   email: string;
-//   phone: string | null;
-//   profileImage: string | null;
-//   status: "ACTIVE" | "INACTIVE";
-//   createdAt: string;
-//   updatedAt: string;
-//   role: TechnicianRole[];
-// }
-
-// export interface TechnicianLocation {
-//   id: string;
-//   country: string;
-//   division: string;
-//   district: string;
-//   area: string;
-//   postalCode: string;
-//   createdAt: string;
-//   updatedAt: string;
-// }
 
 export interface TechnicianServiceCategory {
   id: string;
@@ -64,6 +42,7 @@ export interface TechnicianService {
   updatedAt: string;
 
   service: TechnicianMasterService;
+  technicianProfile: Technician;
 }
 
 export interface TechnicianAvailability {

@@ -1,18 +1,21 @@
-import { Badge } from "@/components/ui/badge";
-import { Card, CardContent } from "@/components/ui/card";
+import {Badge} from "@/components/ui/badge";
+import {Card, CardContent} from "@/components/ui/card";
 import SectionHeading from "@/shared/SectionHeading";
+import {Button} from "@/components/ui/button";
 
-import { TechnicianService } from "@/types/technician";
+import {TechnicianService} from "@/types/technician";
 
 interface TechnicianServicesProps {
   services: TechnicianService[];
+  onBook: (service: TechnicianService) => void;
 }
 
 export default function TechnicianServices({
   services,
+  onBook,
 }: TechnicianServicesProps) {
   const activeServices = services.filter(
-    (service) => service.status === "ACTIVE"
+    (service) => service.status === "ACTIVE",
   );
 
   return (
@@ -45,9 +48,7 @@ export default function TechnicianServices({
                     </p>
                   </div>
 
-                  <Badge>
-                    ৳{Number(item.price).toLocaleString()}
-                  </Badge>
+                  <Badge>৳{Number(item.price).toLocaleString()}</Badge>
                 </div>
 
                 {item.description && (
@@ -55,6 +56,8 @@ export default function TechnicianServices({
                     {item.description}
                   </p>
                 )}
+
+                <Button onClick={() => onBook(item)}>Book Now</Button>
               </CardContent>
             </Card>
           ))}

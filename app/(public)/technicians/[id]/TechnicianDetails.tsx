@@ -1,7 +1,7 @@
 "use client";
-
+import { useState } from "react";
 import Container from "@/shared/container";
-
+import { TechnicianService } from "@/types/technician";
 import { useTechnician } from "@/hooks/useTechnician";
 import { useTechnicianReviews } from "@/hooks/useTechnicianReviews";
 import TechnicianHero from "../../_components/technician-details/TechnicianHero";
@@ -9,6 +9,7 @@ import TechnicianServices from "../../_components/technician-details/TechnicianS
 import TechnicianAvailability from "../../_components/technician-details/TechnicianAvailability";
 import TechnicianReviews from "../../_components/technician-details/TechnicianReviews";
 import TechnicianDetailsSkeleton from "../../_components/technician-details/TechnicianDetailsSkeleton";
+import BookingDialog from "@/components/booking/BookingDialog";
 
 interface TechnicianDetailsProps {
   id: string;
@@ -17,6 +18,13 @@ interface TechnicianDetailsProps {
 export default function TechnicianDetails({
   id,
 }: TechnicianDetailsProps) {
+const [selectedService, setSelectedService] =
+  useState<TechnicianService | null>(null);
+
+const [bookingOpen, setBookingOpen] =
+  useState(false);
+
+
   const {
     data: technician,
     isLoading: isTechnicianLoading,
@@ -47,6 +55,10 @@ if (isTechnicianLoading || isReviewsLoading) {
      <TechnicianHero technician={technician} />
      <TechnicianServices
   services={technician.technicianServices ?? []}
+  onBook={(service) => {
+    setSelectedService(service);
+    setBookingOpen(true);
+  }}
 />
 
 <TechnicianAvailability
@@ -58,6 +70,16 @@ if (isTechnicianLoading || isReviewsLoading) {
   totalReviews={reviewsData.totalReviews}
   reviews={reviewsData.reviews}
 />
+<BookingDialog
+  open={bookingOpen}
+  onOpenChange={setBookingOpen}
+  service={selectedService}
+  availabilities={technician.availabilities ?? []}
+/>
+
+
     </Container>
   );
+
+  
 }
