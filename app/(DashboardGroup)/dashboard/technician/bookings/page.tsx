@@ -4,6 +4,7 @@ import Container from "@/shared/container";
 
 import { useTechnicianBookings } from "@/hooks/booking/useTechnicianBookings";
 import TechnicianBookingCard from "@/app/(DashboardGroup)/_components/technician/TechnicianBookingCard";
+import TechnicianBookingsSkeleton from "@/app/(DashboardGroup)/_components/technician/TechnicianBookingsSkeleton";
 
 export default function TechnicianBookingsPage() {
   const { data, isLoading } =
@@ -11,13 +12,13 @@ export default function TechnicianBookingsPage() {
 
   const bookings = data?.data ?? [];
 
-  if (isLoading) {
-    return (
-      <Container>
-        Loading...
-      </Container>
-    );
-  }
+ if (isLoading) {
+  return (
+    <Container className="py-8">
+      <TechnicianBookingsSkeleton />
+    </Container>
+  );
+}
 
   return (
     <Container className="space-y-8">

@@ -95,7 +95,7 @@ const isTechnician =
       : "hidden border-r lg:block"
   )}
 >
-      <div className="sticky top-20 p-6">
+     <div className="sticky top-20 h-[calc(100vh-5rem)] overflow-y-auto p-6">
         <h2 className="mb-6 text-xl font-bold">
           Dashboard
         </h2>

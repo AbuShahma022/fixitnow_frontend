@@ -10,6 +10,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import TechnicianBookingsSkeleton from "../../_components/technician/TechnicianBookingsSkeleton";
 
 export default function TechnicianDashboardPage() {
   const { data, isLoading } =useTechnicianBookings();
@@ -52,9 +53,13 @@ const cards = [
   },
 ];
 
-  if (isLoading) {
-    return <Container>Loading...</Container>;
-  }
+ if (isLoading) {
+  return (
+    <Container className="py-8">
+      <TechnicianBookingsSkeleton />
+    </Container>
+  );
+}
 
   return (
     <Container className="space-y-8">

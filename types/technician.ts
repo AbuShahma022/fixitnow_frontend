@@ -96,3 +96,26 @@ export interface CreateTechnicianProfilePayload {
 
 export type CreateTechnicianProfileResponse =
   ApiResponse<Technician>;
+
+  export interface CreateTechnicianServicePayload {
+  serviceId: string;
+  price: number;
+  description?: string;
+}
+
+export interface UpdateTechnicianServicePayload {
+  price?: number;
+  description?: string;
+}
+
+export interface TechnicianServicesResponse {
+  success: boolean;
+  message: string;
+  data: TechnicianService[];
+}
+
+export interface TechnicianServiceResponse {
+  success: boolean;
+  message: string;
+  data: TechnicianService;
+}

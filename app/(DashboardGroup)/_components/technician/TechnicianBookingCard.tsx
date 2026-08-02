@@ -50,6 +50,14 @@ export default function TechnicianBookingCard({
         <div className="flex items-start justify-between gap-4">
           <div>
             <h3 className="text-lg font-semibold">{booking.customer?.name}</h3>
+            <p className="text-sm text-muted-foreground">
+              {booking.customer?.email}
+            </p>
+            {booking.customer?.phone && (
+              <p className="text-sm text-muted-foreground">
+                {booking.customer.phone}
+              </p>
+            )}
 
             <p className="text-sm text-muted-foreground">
               {booking.technicianService.service.name}
@@ -61,6 +69,18 @@ export default function TechnicianBookingCard({
           </div>
 
           <Badge>{booking.status}</Badge>
+        </div>
+
+        <div className="flex items-center gap-2">
+          <span className="text-sm font-medium">Payment:</span>
+
+          <Badge
+            variant={
+              booking.payment?.status === "SUCCESS" ? "default" : "secondary"
+            }
+          >
+            {booking.payment?.status ?? "UNPAID"}
+          </Badge>
         </div>
 
         <div>
@@ -77,10 +97,31 @@ export default function TechnicianBookingCard({
           </p>
         </div>
 
+        {booking.review && (
+          <div className="rounded-lg border bg-muted/40 p-4 space-y-2">
+            <div className="flex items-center justify-between">
+              <p className="font-medium">Customer Review</p>
+
+              <Badge>⭐ {booking.review.rating}/5</Badge>
+            </div>
+
+            <p className="text-sm text-muted-foreground">
+              {booking.review.comment}
+            </p>
+          </div>
+        )}
+
         <div className="flex items-center justify-between gap-3">
           <span className="font-semibold text-primary">
             ৳{Number(booking.agreedPrice).toLocaleString()}
           </span>
+
+          {booking.payment?.paidAt && (
+            <p className="text-xs text-muted-foreground">
+              Paid on{" "}
+              {dayjs(booking.payment.paidAt).format("DD MMM YYYY, hh:mm A")}
+            </p>
+          )}
 
           <div className="flex gap-2">
             {booking.status === "REQUESTED" && (
