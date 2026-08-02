@@ -9,11 +9,14 @@ import {
   User,
   Settings,
   CreditCard,
+  BriefcaseBusiness,
+CalendarDays,
 } from "lucide-react";
+import { useProfile } from "@/hooks/auth/useProfile";
 
 import { cn } from "@/lib/utils";
 
-const navItems = [
+const customerNavItems = [
   {
     title: "Overview",
     href: "/dashboard",
@@ -25,10 +28,10 @@ const navItems = [
     icon: ClipboardList,
   },
   {
-  title: "Payment History",
-  href: "/dashboard/payment-history",
-  icon: CreditCard,
-},
+    title: "Payment History",
+    href: "/dashboard/payment-history",
+    icon: CreditCard,
+  },
   {
     title: "Profile",
     href: "/dashboard/profile",
@@ -41,6 +44,29 @@ const navItems = [
   },
 ];
 
+const technicianNavItems = [
+  {
+    title: "Technician Dashboard",
+    href: "/dashboard/technician",
+    icon: LayoutDashboard,
+  },
+  {
+    title: "Technician Bookings",
+    href: "/dashboard/technician/bookings",
+    icon: ClipboardList,
+  },
+  {
+    title: "My Services",
+    href: "/dashboard/technician/services",
+    icon: BriefcaseBusiness,
+  },
+  {
+    title: "Availability",
+    href: "/dashboard/technician/availability",
+    icon: CalendarDays,
+  },
+];
+
 interface DashboardSidebarProps {
   mobile?: boolean;
 }
@@ -49,6 +75,16 @@ export default function DashboardSidebar({
      mobile = false,
 }: DashboardSidebarProps) {
   const pathname = usePathname();
+  const { data } = useProfile();
+
+const isTechnician =
+  !!data?.data?.technicianProfile;
+  const navItems = isTechnician
+  ? [
+      ...customerNavItems,
+      ...technicianNavItems,
+    ]
+  : customerNavItems;
 
   return (
    <aside

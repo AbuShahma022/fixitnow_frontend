@@ -4,6 +4,7 @@ import {
   CreateBookingPayload,
   CreateBookingResponse,
   MyBookingsResponse,
+  TechnicianBookingsResponse,
 } from "@/types/booking";
 
 export const createBooking = async (
@@ -41,3 +42,32 @@ export const getMyBookings = async (): Promise<MyBookingsResponse> => {
 
   return data;
 };
+
+type TechnicianBookingAction =
+  | "accept-booking"
+  | "decline-booking"
+  | "mark-booking-in-progress"
+  | "complete-booking";
+
+
+export const getTechnicianBookings =
+  async (): Promise<TechnicianBookingsResponse> => {
+    const { data } = await api.get<TechnicianBookingsResponse>(
+      "/booking/get-technician-bookings"
+    );
+
+    return data;
+  };
+
+  export const updateTechnicianBookingStatus =
+  async (
+    id: string,
+    action: TechnicianBookingAction
+  ): Promise<CreateBookingResponse> => {
+    const { data } =
+      await api.patch<CreateBookingResponse>(
+        `/booking/${action}/${id}`
+      );
+
+    return data;
+  };

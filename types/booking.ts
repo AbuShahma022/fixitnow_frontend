@@ -5,16 +5,29 @@ import {
 } from "./technician";
 import type { Review } from "./review";
 export type BookingStatus =
-  | "REQUESTED"
+    | "REQUESTED"
   | "ACCEPTED"
+  | "IN_PROGRESS"
   | "COMPLETED"
+  | "DECLINED"
   | "CANCELLED";
-
 export interface CreateBookingPayload {
   technicianServiceId: string;
   availabilityId: string;
   address: string;
   problemDescription: string;
+}
+
+export interface BookingCustomer {
+  id: string;
+  name: string;
+  email: string;
+  phone: string | null;
+  profileImage: string | null;
+  status: "ACTIVE" | "BLOCKED";
+  
+  createdAt: string;
+  updatedAt: string;
 }
 
 export interface Booking {
@@ -32,6 +45,7 @@ export interface Booking {
 
   createdAt: string;
   updatedAt: string;
+  customer?: BookingCustomer;
 
   technicianService: TechnicianService;
   availability: TechnicianAvailability;
@@ -60,6 +74,12 @@ export interface Payment {
 
 
 export interface MyBookingsResponse {
+  success: boolean;
+  message: string;
+  data: Booking[];
+}
+
+export interface TechnicianBookingsResponse {
   success: boolean;
   message: string;
   data: Booking[];

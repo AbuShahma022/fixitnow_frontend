@@ -1,7 +1,7 @@
 import { ApiResponse } from "./api";
 import { Technician } from "./technician";
 
-export type UserStatus = "ACTIVE" | "INACTIVE";
+export type UserStatus = "ACTIVE" | "BLOCKED";
 
 export type UserRoleType =
   | "CUSTOMER"

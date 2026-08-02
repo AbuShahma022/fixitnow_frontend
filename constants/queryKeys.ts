@@ -7,5 +7,6 @@ export const QUERY_KEYS = {
      TECHNICIAN_REVIEWS: ["technician-reviews"],
       USER: ["user"],
       BOOKING: ["booking"],
+      TECHNICIAN_BOOKINGS: ["technician-bookings"],
       
 } as const;
