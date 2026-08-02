@@ -18,7 +18,7 @@ export default function TechnicianServiceCard({
   technician,
   service,
 }: TechnicianServiceCardProps) {
-  const technicianService = technician.technicianServices.find(
+  const technicianService = technician.technicianServices!.find(
     (item) => item.service.id === service.id,
   );
 

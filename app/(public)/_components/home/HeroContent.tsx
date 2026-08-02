@@ -4,6 +4,7 @@ import { ArrowRight, Clock3, ShieldCheck, Star } from "lucide-react";
 
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import BecomeTechnicianButton from "./BecomeTechnicianButton";
 
 export default function HeroContent() {
   return (
@@ -31,11 +32,7 @@ export default function HeroContent() {
           </Link>
         </Button>
 
-        <Button asChild variant="outline" size="lg">
-          <Link href="/register">
-            Become a Technician
-          </Link>
-        </Button>
+        <BecomeTechnicianButton />
       </div>
 
       <div className="mt-10 flex flex-wrap gap-6 text-sm">

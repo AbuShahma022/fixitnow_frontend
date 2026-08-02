@@ -9,10 +9,19 @@ export const useLogout = () => {
   return useMutation({
     mutationFn: logout,
 
-    onSuccess: () => {
-      queryClient.removeQueries({
-        queryKey: QUERY_KEYS.USER,
-      });
+    onSuccess: async() => {
+       await queryClient.cancelQueries({
+    queryKey: QUERY_KEYS.USER,
+  });
+
+  queryClient.setQueryData(
+    QUERY_KEYS.USER,
+    undefined
+  );
+
+  queryClient.removeQueries({
+    queryKey: QUERY_KEYS.USER,
+  });
     },
   });
 };

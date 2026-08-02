@@ -1,3 +1,4 @@
+import { ApiResponse } from "./api";
 import { Location } from "./location";
 import { User } from "./user";
 
@@ -79,3 +80,19 @@ export interface TechniciansResponse {
   message: string;
   data: Technician[];
 }
+
+export interface CreateTechnicianProfilePayload {
+  bio?: string;
+  experienceYears: number;
+
+  location: {
+    country: string;
+    division: string;
+    district: string;
+    area: string;
+    postalCode?: string;
+  };
+}
+
+export type CreateTechnicianProfileResponse =
+  ApiResponse<Technician>;

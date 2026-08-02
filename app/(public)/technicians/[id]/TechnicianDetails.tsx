@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import Container from "@/shared/container";
 import { TechnicianService } from "@/types/technician";
 import { useTechnician } from "@/hooks/useTechnician";
@@ -10,6 +11,7 @@ import TechnicianAvailability from "../../_components/technician-details/Technic
 import TechnicianReviews from "../../_components/technician-details/TechnicianReviews";
 import TechnicianDetailsSkeleton from "../../_components/technician-details/TechnicianDetailsSkeleton";
 import BookingDialog from "@/components/booking/BookingDialog";
+import { useProfile } from "@/hooks/auth/useProfile";
 
 interface TechnicianDetailsProps {
   id: string;
@@ -18,6 +20,13 @@ interface TechnicianDetailsProps {
 export default function TechnicianDetails({
   id,
 }: TechnicianDetailsProps) {
+  const router = useRouter();
+
+const { data } = useProfile();
+
+const user = data?.data;
+
+
 const [selectedService, setSelectedService] =
   useState<TechnicianService | null>(null);
 
@@ -52,32 +61,34 @@ if (isTechnicianLoading || isReviewsLoading) {
 
   return (
     <Container className="space-y-10 py-20">
-     <TechnicianHero technician={technician} />
-     <TechnicianServices
-  services={technician.technicianServices ?? []}
-  onBook={(service) => {
-    setSelectedService(service);
-    setBookingOpen(true);
-  }}
-/>
+      <TechnicianHero technician={technician} />
+      <TechnicianServices
+        services={technician.technicianServices ?? []}
+        onBook={(service) => {
+          if (!user) {
+            router.push("/login");
+            return;
+          }
 
-<TechnicianAvailability
-  availabilities={technician.availabilities ?? []}
-/>
+          setSelectedService(service);
+          setBookingOpen(true);
+        }}
+      />
+      <TechnicianAvailability
+        availabilities={technician.availabilities ?? []}
+      />
 
-<TechnicianReviews
-  averageRating={reviewsData.averageRating}
-  totalReviews={reviewsData.totalReviews}
-  reviews={reviewsData.reviews}
-/>
-<BookingDialog
-  open={bookingOpen}
-  onOpenChange={setBookingOpen}
-  service={selectedService}
-  availabilities={technician.availabilities ?? []}
-/>
-
-
+      <TechnicianReviews
+        averageRating={reviewsData.averageRating}
+        totalReviews={reviewsData.totalReviews}
+        reviews={reviewsData.reviews}
+      />
+      <BookingDialog
+        open={bookingOpen}
+        onOpenChange={setBookingOpen}
+        service={selectedService}
+        availabilities={technician.availabilities ?? []}
+      />
     </Container>
   );
 
