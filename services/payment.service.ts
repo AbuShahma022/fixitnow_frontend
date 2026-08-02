@@ -22,3 +22,14 @@ export const verifyPaymentSession = async (
 
   return data;
 };
+
+import { PaymentHistoryResponse } from "@/types/payment";
+
+export const getMyPayments = async () => {
+  const { data } =
+    await api.get<PaymentHistoryResponse>(
+      "/payment/get-my-payments"
+    );
+
+  return data;
+};

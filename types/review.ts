@@ -1,3 +1,5 @@
+import { ApiResponse } from "./api";
+
 export interface ReviewCustomer {
   id: string;
   name: string;
@@ -25,3 +27,17 @@ export interface TechnicianReviewsResponse {
     reviews: Review[];
   };
 }
+
+export interface CreateReviewPayload {
+  bookingId: string;
+  rating: number;
+  comment: string;
+}
+
+export interface CreateReview extends Review {
+  bookingId: string;
+  updatedAt: string;
+}
+
+export type CreateReviewResponse =
+  ApiResponse<CreateReview>;

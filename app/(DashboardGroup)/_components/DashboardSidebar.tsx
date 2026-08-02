@@ -8,6 +8,7 @@ import {
   ClipboardList,
   User,
   Settings,
+  CreditCard,
 } from "lucide-react";
 
 import { cn } from "@/lib/utils";
@@ -23,6 +24,11 @@ const navItems = [
     href: "/dashboard/bookings",
     icon: ClipboardList,
   },
+  {
+  title: "Payment History",
+  href: "/dashboard/payment-history",
+  icon: CreditCard,
+},
   {
     title: "Profile",
     href: "/dashboard/profile",

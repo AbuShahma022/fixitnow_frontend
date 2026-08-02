@@ -1,3 +1,4 @@
+import { CreateReviewPayload, CreateReviewResponse } from "@/types/review";
 import { api } from "./axios";
 
 export const getTechnicianReviews = async (technicianId: string) => {
@@ -6,4 +7,16 @@ export const getTechnicianReviews = async (technicianId: string) => {
   );
 
   return response.data.data;
+};
+
+export const createReview = async (
+  payload: CreateReviewPayload
+): Promise<CreateReviewResponse> => {
+  const { data } =
+    await api.post<CreateReviewResponse>(
+      "/reviews/create-review",
+      payload
+    );
+
+  return data;
 };

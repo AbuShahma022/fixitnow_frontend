@@ -3,6 +3,7 @@ import {
   TechnicianService,
   
 } from "./technician";
+import type { Review } from "./review";
 export type BookingStatus =
   | "REQUESTED"
   | "ACCEPTED"
@@ -57,14 +58,6 @@ export interface Payment {
   updatedAt: string;
 }
 
-export interface Review {
-  id: string;
-  bookingId: string;
-  rating: number;
-  comment: string;
-  createdAt: string;
-  updatedAt: string;
-}
 
 export interface MyBookingsResponse {
   success: boolean;

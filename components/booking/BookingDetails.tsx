@@ -8,6 +8,7 @@ import BookingSummary from "./BookingSummary";
 import BookingActions from "./BookingActions";
 import BookingDetailsSkeleton from "./BookingDetailsSkeleton";
 import PaymentCard from "../payment/PaymentCard";
+import BookingReview from "./BookingReview";
 
 interface BookingDetailsProps {
   id: string;
@@ -45,6 +46,7 @@ export default function BookingDetails({
      <BookingHero booking={booking} />
      <BookingSummary booking={booking} />
      <BookingActions booking={booking} />
+     <BookingReview booking={booking} />
      <PaymentCard booking={booking} />
     </Container>
   );
