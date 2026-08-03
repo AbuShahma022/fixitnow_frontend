@@ -22,5 +22,7 @@ ADMIN_MASTER_SERVICES: [
 MASTER_SERVICE_DETAILS: [
   "master-service-details",
 ],
+ADMIN_USERS: ["admin-users"],
+USER_DETAILS: ["user-details"],
       
 } as const;

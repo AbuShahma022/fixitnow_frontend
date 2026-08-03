@@ -53,3 +53,19 @@ export interface UpdateTechnicianProfilePayload {
     postalCode?: string;
   };
 }
+
+export interface UsersResponse {
+  success: boolean;
+  message: string;
+  data: ProfileUser[];
+}
+
+export interface UserResponse {
+  success: boolean;
+  message: string;
+  data: ProfileUser;
+}
+
+export interface UpdateUserStatusPayload {
+  status: UserStatus;
+}
