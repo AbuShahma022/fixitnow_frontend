@@ -9,5 +9,6 @@ export const QUERY_KEYS = {
       BOOKING: ["booking"],
       TECHNICIAN_BOOKINGS: ["technician-bookings"],
       TECHNICIAN_SERVICES: ["technician-services"],
+      AVAILABILITIES: ["availabilities"],
       
 } as const;

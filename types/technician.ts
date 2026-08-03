@@ -119,3 +119,36 @@ export interface TechnicianServiceResponse {
   message: string;
   data: TechnicianService;
 }
+
+export type DayOfWeek =
+  | "MONDAY"
+  | "TUESDAY"
+  | "WEDNESDAY"
+  | "THURSDAY"
+  | "FRIDAY"
+  | "SATURDAY"
+  | "SUNDAY";
+
+export interface CreateAvailabilityPayload {
+  dayOfWeek: DayOfWeek;
+  startTime: string;
+  endTime: string;
+}
+
+export interface UpdateAvailabilityPayload {
+  dayOfWeek: DayOfWeek;
+  startTime: string;
+  endTime: string;
+}
+
+export interface TechnicianAvailabilitiesResponse {
+  success: boolean;
+  message: string;
+  data: TechnicianAvailability[];
+}
+
+export interface TechnicianAvailabilityResponse {
+  success: boolean;
+  message: string;
+  data: TechnicianAvailability;
+}
