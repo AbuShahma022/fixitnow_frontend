@@ -17,11 +17,7 @@ export default function TechnicianHero({
 
   return (
     <div className="space-y-8">
-      <Button
-        asChild
-        variant="ghost"
-        className="w-fit"
-      >
+      <Button asChild variant="ghost" className="w-fit">
         <Link href="/technicians">
           <ArrowLeft className="mr-2 h-4 w-4" />
           Back to Technicians
@@ -46,13 +42,9 @@ export default function TechnicianHero({
                   Verified Technician
                 </Badge>
 
-                <h1 className="text-3xl font-bold">
-                  {user.name}
-                </h1>
+                <h1 className="text-3xl font-bold">{user.name}</h1>
 
-                <p className="mt-2 text-muted-foreground">
-                  {technician.bio}
-                </p>
+                <p className="mt-2 text-muted-foreground">{technician.bio}</p>
               </div>
 
               <div className="flex flex-wrap gap-6 text-sm text-muted-foreground">
@@ -76,15 +68,13 @@ export default function TechnicianHero({
                 <div className="flex items-center gap-2">
                   <Briefcase className="h-4 w-4" />
 
-                  <span>
-                    {technician.experienceYears} Years Experience
-                  </span>
+                  <span>{technician.experienceYears} Years Experience</span>
                 </div>
               </div>
             </div>
 
-            <Button size="lg">
-              Book Now
+            <Button size="lg" disabled>
+              Choose a Service Below
             </Button>
           </div>
         </CardContent>

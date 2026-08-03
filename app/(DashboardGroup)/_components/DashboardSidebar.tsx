@@ -7,7 +7,7 @@ import {
   LayoutDashboard,
   ClipboardList,
   User,
-  Settings,
+  
   CreditCard,
   BriefcaseBusiness,
 CalendarDays,
@@ -38,11 +38,7 @@ const customerNavItems = [
     href: "/dashboard/profile",
     icon: User,
   },
-  {
-    title: "Settings",
-    href: "/dashboard/settings",
-    icon: Settings,
-  },
+  
 ];
 
 const technicianNavItems = [
