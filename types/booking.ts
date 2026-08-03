@@ -84,3 +84,15 @@ export interface TechnicianBookingsResponse {
   message: string;
   data: Booking[];
 }
+
+export interface BookingResponse {
+  success: boolean;
+  message: string;
+  data: Booking;
+}
+
+export interface BookingsResponse {
+  success: boolean;
+  message: string;
+  data: Booking[];
+}

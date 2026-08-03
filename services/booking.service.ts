@@ -5,6 +5,8 @@ import {
   CreateBookingResponse,
   MyBookingsResponse,
   TechnicianBookingsResponse,
+    BookingResponse,
+  BookingsResponse,
 } from "@/types/booking";
 
 export const createBooking = async (
@@ -71,3 +73,23 @@ export const getTechnicianBookings =
 
     return data;
   };
+
+  export const getAllBookings = async () => {
+  const { data } =
+    await api.get<BookingsResponse>(
+      "/booking/get-all-bookings"
+    );
+
+  return data;
+};
+
+export const getBookingById = async (
+  id: string
+) => {
+  const { data } =
+    await api.get<BookingResponse>(
+      `/booking/get-booking-details/${id}`
+    );
+
+  return data;
+};
