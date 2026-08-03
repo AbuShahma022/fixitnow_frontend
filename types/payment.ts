@@ -1,4 +1,5 @@
 import { ApiResponse } from "./api";
+import { Booking } from "./booking";
 
 export interface PaymentHistory {
   id: string;
@@ -28,6 +29,22 @@ export interface PaymentHistory {
       };
     };
   };
+}
+
+export interface Payment extends PaymentHistory {
+  booking: Booking;
+}
+
+export interface PaymentResponse {
+  success: boolean;
+  message: string;
+  data: Payment;
+}
+
+export interface PaymentsResponse {
+  success: boolean;
+  message: string;
+  data: Payment[];
 }
 
 export type PaymentHistoryResponse =

@@ -24,5 +24,7 @@ MASTER_SERVICE_DETAILS: [
 ],
 ADMIN_USERS: ["admin-users"],
 USER_DETAILS: ["user-details"],
+ADMIN_PAYMENTS: ["admin-payments"],
+PAYMENT_DETAILS: ["payment-details"],
       
 } as const;
