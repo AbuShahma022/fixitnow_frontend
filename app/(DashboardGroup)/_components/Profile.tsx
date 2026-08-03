@@ -4,18 +4,19 @@ import Container from "@/shared/container";
 
 import { useProfile } from "@/hooks/auth/useProfile";
 import ProfileCard from "./ProfileCard";
+import ProfileSkeleton from "./ProfileSkeleton";
 
 
 export default function Profile() {
   const { data, isLoading, isError } = useProfile();
 
-  if (isLoading) {
-    return (
-      <Container className="py-10">
-        Loading...
-      </Container>
-    );
-  }
+ if (isLoading) {
+  return (
+    <Container className="py-10">
+      <ProfileSkeleton />
+    </Container>
+  );
+}
 
   if (isError || !data) {
     return (

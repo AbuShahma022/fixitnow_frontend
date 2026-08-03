@@ -11,6 +11,7 @@ import {
   CreditCard,
   BriefcaseBusiness,
 CalendarDays,
+FilePlus2,
 } from "lucide-react";
 import { useProfile } from "@/hooks/auth/useProfile";
 
@@ -60,6 +61,11 @@ const technicianNavItems = [
     href: "/dashboard/technician/services",
     icon: BriefcaseBusiness,
   },
+  {
+  title: "Service Requests",
+  href: "/dashboard/technician/service-requests",
+  icon: FilePlus2,
+},
   {
     title: "Availability",
     href: "/dashboard/technician/availability",
