@@ -7,10 +7,10 @@ import { toast } from "sonner";
 
 import {
   updateProfileSchema,
-  UpdateProfileFormValues,
+    UpdateProfileFormValues,
 } from "@/validations/profile.validation";
 
-import { ProfileUser } from "@/types/user";
+import { ProfileUser, UpdateProfilePayload } from "@/types/user";
 
 import { useUpdateProfile } from "@/hooks/auth/useUpdateProfile";
 
@@ -43,7 +43,7 @@ export default function EditProfileDialog({
     reset,
     formState: { errors },
   } = useForm<UpdateProfileFormValues>({
-    resolver: zodResolver(updateProfileSchema),
+    resolver: zodResolver(updateProfileSchema) as any,
   });
 
   useEffect(() => {
@@ -59,7 +59,7 @@ export default function EditProfileDialog({
 const onSubmit = (
   values: UpdateProfileFormValues
 ) => {
-  const payload: Record<string, string> = {};
+ const payload: UpdateProfilePayload = {};
 
   if (values.name !== user.name) {
     payload.name = values.name;

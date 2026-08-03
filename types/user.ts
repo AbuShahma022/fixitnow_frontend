@@ -36,9 +36,18 @@ export interface ProfileUser extends User {
 export type ProfileResponse = ApiResponse<ProfileUser>;
 
 export interface UpdateProfilePayload {
-  name: string;
+  name?: string;
   phone?: string;
   profileImage?: string;
+  bio?: string;
+  experienceYears?: number;
+  location?: {
+    country: string;
+    division: string;
+    district: string;
+    area: string;
+    postalCode?: string;
+  };
 }
 
 export interface UpdateTechnicianProfilePayload {

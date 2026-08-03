@@ -46,10 +46,13 @@ export interface TechnicianService {
   technicianProfile: Technician;
 }
 
+
+
+
 export interface TechnicianAvailability {
   id: string;
   technicianProfileId: string;
-  dayOfWeek: string;
+  dayOfWeek: DayOfWeek;
   startTime: string;
   endTime: string;
   status: "AVAILABLE" | "UNAVAILABLE";
