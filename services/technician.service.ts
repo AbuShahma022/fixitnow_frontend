@@ -1,3 +1,4 @@
+import { UpdateTechnicianProfilePayload } from "@/types/user";
 import { api } from "./axios";
 
 import { CreateTechnicianProfilePayload,
@@ -99,3 +100,13 @@ export const getMyTechnicianServices =
     return data;
   };
   
+  export const updateTechnicianProfile = async (
+  payload: UpdateTechnicianProfilePayload
+) => {
+  const { data } = await api.patch(
+    "/technician-profile/update-my-technician-profile",
+    payload
+  );
+
+  return data;
+};

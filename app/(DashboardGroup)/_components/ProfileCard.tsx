@@ -9,6 +9,7 @@ import {Card, CardContent, CardHeader, CardTitle} from "@/components/ui/card";
 import {CalendarDays, Phone, ShieldCheck, Pencil, Clock3} from "lucide-react";
 import {Button} from "@/components/ui/button";
 import EditProfileDialog from "./EditProfileDialog";
+import EditTechnicianProfileDialog from "./EditTechnicianProfileDialog";
 
 interface ProfileCardProps {
   user: ProfileUser;
@@ -16,6 +17,7 @@ interface ProfileCardProps {
 
 export default function ProfileCard({user}: ProfileCardProps) {
   const [open, setOpen] = useState(false);
+  const [technicianOpen, setTechnicianOpen] = useState(false);
 
   return (
     <Card>
@@ -41,10 +43,18 @@ export default function ProfileCard({user}: ProfileCardProps) {
             </div>
           </div>
 
-          <Button onClick={() => setOpen(true)}>
-            <Pencil className="mr-2 h-4 w-4" />
-            Edit Profile
-          </Button>
+          <div className="flex flex-col gap-2">
+            <Button onClick={() => setOpen(true)}>
+              <Pencil className="mr-2 h-4 w-4" />
+              Edit Profile
+            </Button>
+
+            {user.technicianProfile && (
+              <Button variant="outline" onClick={() => setTechnicianOpen(true)}>
+                Edit Technician Profile
+              </Button>
+            )}
+          </div>
         </div>
       </CardHeader>
       <CardContent className="grid gap-8 py-8 md:grid-cols-2">
@@ -91,8 +101,56 @@ export default function ProfileCard({user}: ProfileCardProps) {
             </p>
           </div>
         </div>
+        {user.technicianProfile && (
+          <>
+            <div className="md:col-span-2">
+              <h3 className="text-lg font-semibold border-t pt-6">
+                Technician Information
+              </h3>
+            </div>
+
+            <div>
+              <p className="text-sm text-muted-foreground">Experience</p>
+
+              <p className="font-medium">
+                {user.technicianProfile.experienceYears} Years
+              </p>
+            </div>
+
+            <div>
+              <p className="text-sm text-muted-foreground">Rating</p>
+
+              <p className="font-medium">
+                {user.technicianProfile.averageRating.toFixed(1)} (
+                {user.technicianProfile.totalReviews} reviews)
+              </p>
+            </div>
+
+            <div className="md:col-span-2">
+              <p className="text-sm text-muted-foreground">Bio</p>
+
+              <p className="font-medium">{user.technicianProfile.bio}</p>
+            </div>
+
+            <div className="md:col-span-2">
+              <p className="text-sm text-muted-foreground">Location</p>
+
+              <p className="font-medium">
+                {user.technicianProfile.location.area},{" "}
+                {user.technicianProfile.location.district},{" "}
+                {user.technicianProfile.location.division},{" "}
+                {user.technicianProfile.location.country}
+              </p>
+            </div>
+          </>
+        )}
       </CardContent>
       <EditProfileDialog open={open} onOpenChange={setOpen} user={user} />
+      <EditTechnicianProfileDialog
+        open={technicianOpen}
+        onOpenChange={setTechnicianOpen}
+        technician={user.technicianProfile}
+      />
     </Card>
   );
 }
