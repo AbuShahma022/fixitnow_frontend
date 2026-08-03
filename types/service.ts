@@ -16,3 +16,21 @@ export interface MasterServicesResponse {
   message: string;
   data: MasterService[];
 }
+
+export interface CreateMasterServicePayload {
+  categoryId: string;
+  name: string;
+  description: string;
+}
+
+export interface UpdateMasterServicePayload {
+  categoryId?: string;
+  name?: string;
+  description?: string;
+}
+
+export interface MasterServiceResponse {
+  success: boolean;
+  message: string;
+  data: MasterService;
+}
