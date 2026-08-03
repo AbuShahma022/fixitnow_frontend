@@ -11,5 +11,7 @@ export const QUERY_KEYS = {
       TECHNICIAN_SERVICES: ["technician-services"],
       AVAILABILITIES: ["availabilities"],
       SERVICE_REQUESTS: ["service-requests"],
+      ADMIN_SERVICE_REQUESTS: ["admin-service-requests"],
+ADMIN_SERVICE_REQUEST_DETAILS: ["admin-service-request-details"],
       
 } as const;
