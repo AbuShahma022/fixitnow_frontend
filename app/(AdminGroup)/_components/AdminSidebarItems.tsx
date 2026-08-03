@@ -11,6 +11,7 @@ import {
   Users,
   CalendarCheck,
   CreditCard,
+  User,
 } from "lucide-react";
 
 import { cn } from "@/lib/utils";
@@ -51,6 +52,11 @@ const adminNavItems = [
     href: "/admin/payments",
     icon: CreditCard,
   },
+  {
+  title: "Profile",
+  href: "/admin/profile",
+  icon: User,
+}
 ];
 
 interface AdminSidebarItemsProps {
