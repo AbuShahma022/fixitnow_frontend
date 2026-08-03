@@ -13,5 +13,7 @@ export const QUERY_KEYS = {
       SERVICE_REQUESTS: ["service-requests"],
       ADMIN_SERVICE_REQUESTS: ["admin-service-requests"],
 ADMIN_SERVICE_REQUEST_DETAILS: ["admin-service-request-details"],
+ADMIN_CATEGORIES: ["admin-categories"],
+CATEGORY_DETAILS: ["category-details"],
       
 } as const;
