@@ -147,7 +147,7 @@ export default function PaymentHistoryPage() {
 
               <Button asChild>
                 <Link
-                  href={`/dashboard/my-bookings/${payment.booking.id}`}
+                  href={`/booking/${payment.booking.id}`}
                 >
                   <CreditCard className="mr-2 h-4 w-4" />
                   View Booking

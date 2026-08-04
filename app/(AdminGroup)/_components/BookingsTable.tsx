@@ -6,6 +6,7 @@ import { Booking } from "@/types/booking";
 
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import BookingMobileCard from "./BookingMobileCard";
 
 interface BookingsTableProps {
   bookings: Booking[];
@@ -18,7 +19,8 @@ export default function BookingsTable({
   onView,
 }: BookingsTableProps) {
   return (
-    <div className="overflow-x-auto rounded-lg border">
+    <>
+    <div className="hidden overflow-x-auto rounded-lg border md:block">
       <table className="w-full text-sm">
         <thead className="bg-muted">
           <tr>
@@ -130,5 +132,20 @@ export default function BookingsTable({
         </tbody>
       </table>
     </div>
+
+    {/* Mobile */}
+  <div className="space-y-4 md:hidden">
+    {bookings.map((booking) => (
+      <BookingMobileCard
+        key={booking.id}
+        booking={booking}
+        onView={onView}
+      />
+    ))}
+  </div>
+
+</>
+
+
   );
 }

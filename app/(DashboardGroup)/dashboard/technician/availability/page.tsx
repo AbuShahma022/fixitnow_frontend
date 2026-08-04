@@ -15,6 +15,7 @@ import AvailabilityCard from "@/app/(DashboardGroup)/_components/technician/Avai
 import CreateAvailabilityDialog from "@/app/(DashboardGroup)/_components/technician/CreateAvailabilityDialog";
 import EditAvailabilityDialog from "@/app/(DashboardGroup)/_components/technician/EditAvailabilityDialog";
 import DeleteAvailabilityDialog from "@/app/(DashboardGroup)/_components/technician/DeleteAvailabilityDialog";
+import AvailabilitySkeleton from "@/app/(DashboardGroup)/_components/technician/AvailabilitySkeleton";
 
 export default function TechnicianAvailabilityPage() {
   const [open, setOpen] = useState(false);
@@ -42,7 +43,7 @@ export default function TechnicianAvailabilityPage() {
     return (
       <Container className="py-8">
         {/* Skeleton comes next */}
-        Loading...
+        <AvailabilitySkeleton />
       </Container>
     );
   }

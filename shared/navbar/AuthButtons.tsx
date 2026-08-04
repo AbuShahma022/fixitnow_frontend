@@ -26,6 +26,9 @@ export default function AuthButtons() {
      const { data, isLoading } = useProfile();
 
   const user = data?.data;
+  const isAdmin = user?.role.some(
+  (item) => item.role === "ADMIN"
+);
   const router = useRouter();
 
 const { mutate: logout, isPending } = useLogout();
@@ -108,7 +111,8 @@ return (
 
   <DropdownMenuItem asChild>
     <Link
-      href="/dashboard"
+      href={isAdmin ? "/admin" : "/dashboard"}
+
       className="flex cursor-pointer items-center gap-2"
     >
       <LayoutDashboard className="h-4 w-4" />

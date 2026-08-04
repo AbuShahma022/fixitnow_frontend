@@ -6,6 +6,7 @@ import { ProfileUser } from "@/types/user";
 
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import UserMobileCard from "./UserMobileCard";
 
 interface UsersTableProps {
   users: ProfileUser[];
@@ -23,7 +24,8 @@ export default function UsersTable({
   onChangeStatus,
 }: UsersTableProps) {
   return (
-    <div className="overflow-x-auto rounded-lg border">
+    <>
+    <div className="hidden md:block overflow-x-auto rounded-lg border">
       <table className="w-full text-sm">
         <thead className="bg-muted">
           <tr>
@@ -131,5 +133,17 @@ export default function UsersTable({
         </tbody>
       </table>
     </div>
+
+    <div className="space-y-4 md:hidden">
+  {users.map((user) => (
+    <UserMobileCard
+      key={user.id}
+      user={user}
+      onView={onView}
+      onChangeStatus={onChangeStatus}
+    />
+  ))}
+</div>
+    </>
   );
 }
